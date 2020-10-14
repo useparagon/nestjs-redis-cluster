@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/useparagon.com/nestjs-redis-cluster"
+    "url": "https://github.com/useparagon/nestjs-redis-cluster"
   },
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
