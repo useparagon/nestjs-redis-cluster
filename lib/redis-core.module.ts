@@ -15,11 +15,13 @@ import {
 
 import { REDIS_MODULE_OPTIONS, REDIS_CLIENT } from './redis.constants';
 import { RedisService } from './redis.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Global()
 @Module({
   providers: [RedisService],
   exports: [RedisService],
+  imports: [ConfigModule]
 })
 export class RedisCoreModule implements OnModuleDestroy {
   constructor(

@@ -19,6 +19,7 @@ const core_1 = require("@nestjs/core");
 const redis_provider_1 = require("./redis.provider");
 const redis_constants_1 = require("./redis.constants");
 const redis_service_1 = require("./redis.service");
+const config_1 = require("@nestjs/config");
 let RedisCoreModule = RedisCoreModule_1 = class RedisCoreModule {
     constructor(options, moduleRef) {
         this.options = options;
@@ -65,6 +66,7 @@ RedisCoreModule = RedisCoreModule_1 = __decorate([
     common_1.Module({
         providers: [redis_service_1.RedisService],
         exports: [redis_service_1.RedisService],
+        imports: [config_1.ConfigModule]
     }),
     __param(0, common_1.Inject(redis_constants_1.REDIS_MODULE_OPTIONS)),
     __metadata("design:paramtypes", [Object, core_1.ModuleRef])

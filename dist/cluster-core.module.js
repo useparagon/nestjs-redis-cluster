@@ -19,6 +19,7 @@ const core_1 = require("@nestjs/core");
 const cluster_provider_1 = require("./cluster.provider");
 const cluster_constants_1 = require("./cluster.constants");
 const cluster_service_1 = require("./cluster.service");
+const config_1 = require("@nestjs/config");
 let ClusterCoreModule = ClusterCoreModule_1 = class ClusterCoreModule {
     constructor(options, moduleRef) {
         this.options = options;
@@ -65,6 +66,7 @@ ClusterCoreModule = ClusterCoreModule_1 = __decorate([
     common_1.Module({
         providers: [cluster_service_1.RedisClusterService],
         exports: [cluster_service_1.RedisClusterService],
+        imports: [config_1.ConfigModule]
     }),
     __param(0, common_1.Inject(cluster_constants_1.REDIS_CLUSTER_MODULE_OPTIONS)),
     __metadata("design:paramtypes", [Object, core_1.ModuleRef])

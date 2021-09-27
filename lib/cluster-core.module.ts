@@ -22,11 +22,13 @@ import {
   REDIS_CLUSTER,
 } from './cluster.constants';
 import { RedisClusterService } from './cluster.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Global()
 @Module({
   providers: [RedisClusterService],
   exports: [RedisClusterService],
+  imports: [ConfigModule]
 })
 export class ClusterCoreModule implements OnModuleDestroy {
   constructor(
