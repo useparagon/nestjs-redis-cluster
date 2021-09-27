@@ -1,10 +1,10 @@
 import { DynamicModule, OnModuleDestroy } from '@nestjs/common';
-import { ModuleRef } from '@nestjs/core';
 import { RedisClusterModuleAsyncOptions, RedisClusterModuleOptions } from './cluster.interface';
+import { RedisClusterProvider } from './cluster.provider';
 export declare class ClusterCoreModule implements OnModuleDestroy {
     private readonly options;
-    private readonly moduleRef;
-    constructor(options: RedisClusterModuleOptions | RedisClusterModuleOptions[], moduleRef: ModuleRef);
+    private readonly provider;
+    constructor(options: RedisClusterModuleOptions | RedisClusterModuleOptions[], provider: RedisClusterProvider);
     static register(options: RedisClusterModuleOptions | RedisClusterModuleOptions[]): DynamicModule;
     static forRootAsync(options: RedisClusterModuleAsyncOptions): DynamicModule;
     onModuleDestroy(): void;

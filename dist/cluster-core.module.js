@@ -15,15 +15,13 @@ var ClusterCoreModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClusterCoreModule = void 0;
 const common_1 = require("@nestjs/common");
-const core_1 = require("@nestjs/core");
 const cluster_provider_1 = require("./cluster.provider");
 const cluster_constants_1 = require("./cluster.constants");
 const cluster_service_1 = require("./cluster.service");
-const config_1 = require("@nestjs/config");
 let ClusterCoreModule = ClusterCoreModule_1 = class ClusterCoreModule {
-    constructor(options, moduleRef) {
+    constructor(options, provider) {
         this.options = options;
-        this.moduleRef = moduleRef;
+        this.provider = provider;
     }
     static register(options) {
         return {
@@ -51,8 +49,7 @@ let ClusterCoreModule = ClusterCoreModule_1 = class ClusterCoreModule {
                 cluster.disconnect();
             }
         };
-        const provider = this.moduleRef.get(cluster_constants_1.REDIS_CLUSTER);
-        const closeClusterConnection = closeConnection(provider);
+        const closeClusterConnection = closeConnection(this.provider);
         if (Array.isArray(this.options)) {
             this.options.forEach(closeClusterConnection);
         }
@@ -66,9 +63,9 @@ ClusterCoreModule = ClusterCoreModule_1 = __decorate([
     common_1.Module({
         providers: [cluster_service_1.RedisClusterService],
         exports: [cluster_service_1.RedisClusterService],
-        imports: [config_1.ConfigModule]
     }),
     __param(0, common_1.Inject(cluster_constants_1.REDIS_CLUSTER_MODULE_OPTIONS)),
-    __metadata("design:paramtypes", [Object, core_1.ModuleRef])
+    __param(1, common_1.Inject(cluster_constants_1.REDIS_CLUSTER)),
+    __metadata("design:paramtypes", [Object, Object])
 ], ClusterCoreModule);
 exports.ClusterCoreModule = ClusterCoreModule;

@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-redis-cluster-anakshiant",
+  "name": "nestjs-redis-cluster",
   "version": "1.2.15",
   "description": "A nestjs redis module w/ cluster support",
   "author": "Ishmael Samuel (useparagon.com)",
