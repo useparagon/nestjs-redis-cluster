@@ -5,7 +5,6 @@ import {
   Inject,
   OnModuleDestroy,
 } from '@nestjs/common';
-import { ModuleRef } from '@nestjs/core';
 import { Redis } from 'ioredis';
 import {
   RedisClusterModuleAsyncOptions,
@@ -34,7 +33,9 @@ export class ClusterCoreModule implements OnModuleDestroy {
     private readonly options:
       | RedisClusterModuleOptions
       | RedisClusterModuleOptions[],
-    private readonly moduleRef: ModuleRef,
+    
+    @Inject(REDIS_CLUSTER)
+    private readonly provider: RedisClusterProvider,
   ) {}
 
   static register(
@@ -72,8 +73,7 @@ export class ClusterCoreModule implements OnModuleDestroy {
       }
     };
 
-    const provider = this.moduleRef.get<RedisClusterProvider>(REDIS_CLUSTER);
-    const closeClusterConnection = closeConnection(provider);
+    const closeClusterConnection = closeConnection(this.provider);
 
     if (Array.isArray(this.options)) {
       this.options.forEach(closeClusterConnection);

@@ -5,7 +5,6 @@ import {
   Inject,
   OnModuleDestroy,
 } from '@nestjs/common';
-import { ModuleRef } from '@nestjs/core';
 import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
 import {
   createAsyncClientOptions,
@@ -25,7 +24,8 @@ export class RedisCoreModule implements OnModuleDestroy {
   constructor(
     @Inject(REDIS_MODULE_OPTIONS)
     private readonly options: RedisModuleOptions | RedisModuleOptions[],
-    private readonly moduleRef: ModuleRef,
+    @Inject(REDIS_CLIENT)
+    private readonly redisClient: RedisClient,
   ) {}
 
   static register(
@@ -60,8 +60,7 @@ export class RedisCoreModule implements OnModuleDestroy {
       }
     };
 
-    const redisClient = this.moduleRef.get<RedisClient>(REDIS_CLIENT);
-    const closeClientConnection = closeConnection(redisClient);
+    const closeClientConnection = closeConnection(this.redisClient);
 
     if (Array.isArray(this.options)) {
       this.options.forEach(closeClientConnection);
