@@ -1,6 +1,6 @@
 {
   "name": "nestjs-redis-cluster",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A nestjs redis module w/ cluster support",
   "author": "Ishmael Samuel (useparagon.com)",
   "license": "MIT",
