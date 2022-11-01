@@ -1,8 +1,8 @@
-import * as Redis from 'ioredis';
+import * as IORedis from 'ioredis';
 import { RedisClient } from './redis.provider';
 export declare class RedisService {
     private readonly redisClient;
     constructor(redisClient: RedisClient);
-    getClient(name?: string): Redis.Redis;
-    getClients(): Map<string, Redis.Redis>;
+    getClient(name?: string): IORedis.Redis;
+    getClients(): Map<string, IORedis.Redis>;
 }

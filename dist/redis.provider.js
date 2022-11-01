@@ -21,7 +21,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAsyncClientOptions = exports.createClient = exports.RedisClientError = void 0;
-const Redis = require("ioredis");
+const IORedis = require("ioredis");
 const uuid = require("uuid");
 const redis_constants_1 = require("./redis.constants");
 class RedisClientError extends Error {
@@ -30,7 +30,7 @@ exports.RedisClientError = RedisClientError;
 function getClient(options) {
     return __awaiter(this, void 0, void 0, function* () {
         const { onClientReady, url } = options, opt = __rest(options, ["onClientReady", "url"]);
-        const client = url ? new Redis(url) : new Redis(opt);
+        const client = url ? new IORedis(url) : new IORedis(opt);
         if (onClientReady) {
             onClientReady(client);
         }
