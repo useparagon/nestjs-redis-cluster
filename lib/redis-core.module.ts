@@ -3,7 +3,7 @@ import {
   Global,
   Module,
   Inject,
-  OnModuleDestroy,
+  OnApplicationShutdown,
 } from '@nestjs/common';
 import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
 import {
@@ -20,7 +20,7 @@ import { RedisService } from './redis.service';
   providers: [RedisService],
   exports: [RedisService],
 })
-export class RedisCoreModule implements OnModuleDestroy {
+export class RedisCoreModule implements OnApplicationShutdown {
   constructor(
     @Inject(REDIS_MODULE_OPTIONS)
     private readonly options: RedisModuleOptions | RedisModuleOptions[],
@@ -50,7 +50,7 @@ export class RedisCoreModule implements OnModuleDestroy {
     };
   }
 
-  onModuleDestroy() {
+  onApplicationShutdown() {
     const closeConnection = ({ clients, defaultKey }) => options => {
       const name = options.name || defaultKey;
       const client = clients.get(name);

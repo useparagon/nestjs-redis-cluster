@@ -3,7 +3,7 @@ import {
   Global,
   Module,
   Inject,
-  OnModuleDestroy,
+  OnApplicationShutdown,
 } from '@nestjs/common';
 import * as IORedis from 'ioredis';
 
@@ -27,7 +27,7 @@ import { RedisClusterService } from './cluster.service';
   providers: [RedisClusterService],
   exports: [RedisClusterService],
 })
-export class ClusterCoreModule implements OnModuleDestroy {
+export class ClusterCoreModule implements OnApplicationShutdown {
   constructor(
     @Inject(REDIS_CLUSTER_MODULE_OPTIONS)
     private readonly options:
@@ -60,7 +60,7 @@ export class ClusterCoreModule implements OnModuleDestroy {
     };
   }
 
-  onModuleDestroy() {
+  onApplicationShutdown() {
     const closeConnection = ({
       clusters,
       defaultKey,

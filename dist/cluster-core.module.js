@@ -41,7 +41,7 @@ let ClusterCoreModule = ClusterCoreModule_1 = class ClusterCoreModule {
             exports: [cluster_service_1.RedisClusterService],
         };
     }
-    onModuleDestroy() {
+    onApplicationShutdown() {
         const closeConnection = ({ clusters, defaultKey, }) => options => {
             const name = options.name || defaultKey;
             const cluster = clusters.get(name);
