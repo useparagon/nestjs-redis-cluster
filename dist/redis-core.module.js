@@ -41,7 +41,7 @@ let RedisCoreModule = RedisCoreModule_1 = class RedisCoreModule {
             exports: [redis_service_1.RedisService],
         };
     }
-    onModuleDestroy() {
+    onApplicationShutdown() {
         const closeConnection = ({ clients, defaultKey }) => options => {
             const name = options.name || defaultKey;
             const client = clients.get(name);
