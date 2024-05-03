@@ -27,7 +27,7 @@ export const createClient = (): Provider => ({
     options: RedisModuleOptions | RedisModuleOptions[],
   ): Promise<RedisClient> => {
     const clients = new Map<string, IORedis.Redis>();
-    let defaultKey = uuid();
+    let defaultKey = uuid.v4();
 
     if (Array.isArray(options)) {
       await Promise.all(

@@ -41,7 +41,7 @@ exports.createClient = () => ({
     provide: redis_constants_1.REDIS_CLIENT,
     useFactory: (options) => __awaiter(void 0, void 0, void 0, function* () {
         const clients = new Map();
-        let defaultKey = uuid();
+        let defaultKey = uuid.v4();
         if (Array.isArray(options)) {
             yield Promise.all(options.map((o) => __awaiter(void 0, void 0, void 0, function* () {
                 const key = o.name || defaultKey;
