@@ -41,7 +41,7 @@ export const createCluster = (): Provider => ({
       string,
       IORedis.Cluster
     >();
-    let defaultKey = uuid();
+    let defaultKey = uuid.v4();
 
     if (Array.isArray(options)) {
       await Promise.all(
