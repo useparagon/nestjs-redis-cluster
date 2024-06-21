@@ -12,12 +12,16 @@
     "build": "rimraf dist && tsc -p tsconfig.json",
     "precommit": "lint-staged",
     "prepublish:npm": "yarn run build",
+    "ci:compile": "whiskers",
     "publish:npm": "yarn publish --access public",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "lint": "tslint -p tsconfig.json -c tslint.json"
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "release:publish:experimental": "yarn publish --new-version=$npm_package_version --tag=experimental",
+    "release:publish:stable": "yarn publish --new-version=$npm_package_version --tag=latest",
+    "release:version:bump": "ts-node ./scripts/version-bump.ts"
   },
   "dependencies": {
     "reflect-metadata": "0.1.13",
@@ -32,6 +36,8 @@
     "@types/node": "^10.7.1",
     "@types/uuid": "^8.3.2",
     "cz-conventional-changelog": "^2.1.0",
+    "@useparagon/whiskers-cli": "0.0.1-canary.15",
+    "@useparagon/whiskers-core": "0.0.1-canary.15",
     "ioredis": "^4.28.5",
     "jest": "^23.6.0",
     "prettier": "^1.19.1",
