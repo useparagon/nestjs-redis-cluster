@@ -1,4 +1,4 @@
-import { prefixEnumValues } from '@useparagon/whiskers-core';
+import { prefixSuffixEnumValues } from '@useparagon/whiskers-core';
 
 export enum SecretKeys {
   /**
@@ -13,4 +13,4 @@ export enum SecretKeys {
   NPM_TOKEN = 'NPM_TOKEN',
 }
 
-export const Secrets = prefixEnumValues(SecretKeys, 'secrets.');
+export const Secrets = prefixSuffixEnumValues('secrets.', SecretKeys, '');

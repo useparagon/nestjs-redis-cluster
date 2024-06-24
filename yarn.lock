@@ -87,6 +87,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/node-fetch@2":
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.6.11.tgz#9b39b78665dae0e82a08f02f4967d62c66f95d24"
+  integrity sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==
+  dependencies:
+    "@types/node" "*"
+    form-data "^4.0.0"
+
 "@types/node@*", "@types/node@^10.7.1":
   version "10.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
@@ -96,59 +104,61 @@
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.4.tgz#bd86a43617df0594787d38b735f55c805becf1bc"
   integrity sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==
 
-"@useparagon/whiskers-cattery-git@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-git/-/whiskers-cattery-git-0.0.1-canary.15.tgz#1f5f0312167bbef4c84e1e62fa121740c73b6330"
-  integrity sha512-8S2gQbbcuG9MkRW3HoL81b4hJxiXm3VMYmT1v9nJHahIOx/V3v+/ZabS4TWaWI3YQy6xu5GFcu+5u/be8fPkDA==
+"@useparagon/whiskers-cattery-git@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-git/-/whiskers-cattery-git-2024.6.14.tgz#24eb5ed0b3df47d3be39bb4e432c6fde4da67b0e"
+  integrity sha512-QTnH3pHtmI2OXH+Yl7IHiuKdkOlpl68R2BgnxV+o/ysWNQtlwAFWydyROyobmKhZeZcLlicpnXHuGxKtFqGZ/w==
   dependencies:
-    "@useparagon/whiskers-core" "0.0.1-canary.15"
+    "@useparagon/whiskers-core" "2024.06.14"
     tslib "^2.6.2"
 
-"@useparagon/whiskers-cattery-github@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-github/-/whiskers-cattery-github-0.0.1-canary.15.tgz#25323c521fe8eca4c042577f997ea1cb8dc7063f"
-  integrity sha512-HHkkENgyejBkfLWgf+2/ciOdmBJ0fyw+jAt0pyWIyRo7XrP4tW7jJWRXmrAdt0DU0O7LN+MuUpVfQVkXa81mhQ==
+"@useparagon/whiskers-cattery-github@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-github/-/whiskers-cattery-github-2024.6.14.tgz#10af6601b37ecd12950a798e7903214be2d7d4e9"
+  integrity sha512-rODBwqPPsN8u5O1E7ICA8AeRXnNEGM2vOfglkcleMh5yrqYTdk//PMbdViZsVIwdWrFsSN9e3xN4t0oUG2VKLg==
   dependencies:
-    "@useparagon/whiskers-core" "0.0.1-canary.15"
+    "@useparagon/whiskers-core" "2024.06.14"
     tslib "^2.6.2"
 
-"@useparagon/whiskers-cattery-node@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-node/-/whiskers-cattery-node-0.0.1-canary.15.tgz#a19c5adaea6b5029932f1ee81601b2977e15763b"
-  integrity sha512-RwHmDReTi/rB1Uoxu+a4cl0qGQIgtN42fKawWqAW+AHr0oN8PYD3XyPd5hATgsInlHWQ1RiSYudLnrrgf6JGGw==
+"@useparagon/whiskers-cattery-node@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-node/-/whiskers-cattery-node-2024.6.14.tgz#7ab3e382935a4d2f2cee0630314ec274bce08413"
+  integrity sha512-4j8ni0fBl8MV8ZP9X7H1zKTfR+L6JrbMHHxESaRfte62LhbQBLgTniN/CEzfQsH0vXCo2Tj0JXS8s0nIh72Vcw==
   dependencies:
-    "@useparagon/whiskers-core" "0.0.1-canary.15"
+    "@useparagon/whiskers-core" "2024.06.14"
     tslib "^2.6.2"
 
-"@useparagon/whiskers-cattery-utils@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-utils/-/whiskers-cattery-utils-0.0.1-canary.15.tgz#fba4948a11b4f8005e25c8482fed2f3051ff0e88"
-  integrity sha512-TKHdRxIZSQYwE3GI2oXIV3mG1DTBIaOsrgCVJHe/2iHYdM2lID7Ucm9768ohaNtQP77TlMwipgjwYFuIuxwAFQ==
+"@useparagon/whiskers-cattery-utils@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cattery-utils/-/whiskers-cattery-utils-2024.6.14.tgz#d0b76d7d39d5469b4266a87c45405bf1771332b4"
+  integrity sha512-kIQQR6FZoOz2jqZhMooRuAdM2OlPTpDAkONoKgycbEqPKtimo8gYCHlm58FxGsXcNuzEChfJeNoTYk3wqmfmlw==
   dependencies:
-    "@useparagon/whiskers-core" "0.0.1-canary.15"
+    "@useparagon/whiskers-core" "2024.06.14"
     tslib "^2.6.2"
 
-"@useparagon/whiskers-cli@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cli/-/whiskers-cli-0.0.1-canary.15.tgz#63c720439e7879601f08cb9c375064f1a10ba094"
-  integrity sha512-6vrkFr1dnd7RyV20S46UPenzAYQzhxn0vViLD6jcEzg0JMJWVUlVaKqiE21TWYW6c23RyyTQ8wPLbEq4G3uPGQ==
+"@useparagon/whiskers-cli@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-cli/-/whiskers-cli-2024.6.14.tgz#12dff1d2155283d818580b7c9cc9cafb9c14f7fe"
+  integrity sha512-gl88uq9R2VHA6OkWEInA/at0UboLgOkPOEXT4reIOXddHraX3u5y7Cf6Ktc0Mnvj7jfdZh99/ONm7hIOCEaxgQ==
   dependencies:
-    "@useparagon/whiskers-cattery-git" "0.0.1-canary.15"
-    "@useparagon/whiskers-cattery-github" "0.0.1-canary.15"
-    "@useparagon/whiskers-cattery-node" "0.0.1-canary.15"
-    "@useparagon/whiskers-cattery-utils" "0.0.1-canary.15"
-    "@useparagon/whiskers-core" "0.0.1-canary.15"
+    "@types/node-fetch" "2"
+    "@useparagon/whiskers-cattery-git" "2024.06.14"
+    "@useparagon/whiskers-cattery-github" "2024.06.14"
+    "@useparagon/whiskers-cattery-node" "2024.06.14"
+    "@useparagon/whiskers-cattery-utils" "2024.06.14"
+    "@useparagon/whiskers-core" "2024.06.14"
     chalk "4"
     clipanion "4.0.0-rc.2"
     glob "^10.3.10"
     jiti "^1.21.0"
+    node-fetch "2"
     tslib "^2.6.2"
     yaml "^2.3.4"
 
-"@useparagon/whiskers-core@0.0.1-canary.15":
-  version "0.0.1-canary.15"
-  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-core/-/whiskers-core-0.0.1-canary.15.tgz#400bfa224a769e442a55d219a2d1e06b1edfb321"
-  integrity sha512-5dX4EjwqQWiSIQkaOYYKgrD/QjWiJ2rvc4iLetyLIFghWhZq3g23KTB9m4UKN/lIFmLKrhKbqDNdisBh9q//WA==
+"@useparagon/whiskers-core@2024.06.14":
+  version "2024.6.14"
+  resolved "https://registry.yarnpkg.com/@useparagon/whiskers-core/-/whiskers-core-2024.6.14.tgz#03737be2728d0be88fa7a5f83e7b746ff0d0501b"
+  integrity sha512-r35o/J6MVVT2T/2ExjuNwiMCdZXGv9HkuGOcB4SYMk9d1XiCDMBizU32wWzA95WRVuzhxYkw9RBIpZSYtDhK0w==
   dependencies:
     tslib "^2.6.2"
 
@@ -730,6 +740,13 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+combined-stream@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
+  integrity sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
+  dependencies:
+    delayed-stream "~1.0.0"
+
 commander@^2.12.1, commander@~2.20.3:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
@@ -1216,6 +1233,15 @@ foreground-child@^3.1.0:
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
+
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
 
 form-data@~2.3.2:
   version "2.3.3"
@@ -2496,6 +2522,13 @@ neo-async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
+
+node-fetch@2:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
+  integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
+  dependencies:
+    whatwg-url "^5.0.0"
 
 node-fetch@^2.6.1:
   version "2.6.5"

@@ -4,7 +4,7 @@ import {
   GithubActionWorkflowJob,
   GithubActionWorkflowStep,
   ShellStepConfig,
-  prefixEnumValues,
+  prefixSuffixEnumValues,
   wrap,
 } from '@useparagon/whiskers-core';
 
@@ -18,7 +18,7 @@ enum InputKeys {
   VERSION = 'version',
 }
 
-const Inputs = prefixEnumValues(InputKeys, 'inputs.');
+const Inputs = prefixSuffixEnumValues('inputs.', InputKeys, '');
 
 const versionBumpJob = new GithubActionWorkflowJob({
   name: 'version bump',
@@ -55,7 +55,8 @@ const publishJob = new GithubActionWorkflowJob({
     }),
     new GithubActionWorkflowStep<ActionsStepConfig<any>>({
       name: 'ci > download artifacts',
-      uses: 'dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e', // v2.28.0
+      uses:
+        'dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e', // v2.28.0
       with: {
         workflow: 'build.yaml',
         workflow_conclusion: 'success',
@@ -88,7 +89,8 @@ export default new GithubActionWorkflow({
     workflow_dispatch: {
       inputs: {
         [InputKeys.BRANCH]: {
-          description: 'The branch of the build. Used to find artifacts and tag.',
+          description:
+            'The branch of the build. Used to find artifacts and tag.',
           required: true,
         },
         [InputKeys.RELEASE_TYPE]: {

@@ -22,13 +22,13 @@ jobs:
     steps:
 
       - name: git > checkout
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
         with:
           clean: true
           fetch-depth: 1
 
       - name: node > setup
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
           node-version-file: .nvmrc
           cache: yarn
@@ -53,13 +53,13 @@ jobs:
     steps:
 
       - name: git > checkout
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
         with:
           clean: true
           fetch-depth: 1
 
       - name: node > setup
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
           node-version-file: .nvmrc
           cache: yarn
