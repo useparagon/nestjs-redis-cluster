@@ -1,0 +1,36 @@
+## ---------------------------------------------------
+##     |\---/|                                       
+##     | ,_, |               !! DO NOT MODIFY !!      
+##      \_`_/-..----.    file managed by `whiskers`  
+##   ___/ `   ' ,""+ \                              
+##  (__...'   __\    |`.___.';                       
+##    (_,...'(_,.`__)/'.....+                         
+## ---------------------------------------------------
+
+name: release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+
+      - name: git > checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        with:
+          clean: true
+          fetch-depth: 1
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+
+      - name: release > create github release
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844
+        with:
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref, 'experimental') }}

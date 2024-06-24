@@ -1,0 +1,104 @@
+## ---------------------------------------------------
+##     |\---/|                                       
+##     | ,_, |               !! DO NOT MODIFY !!      
+##      \_`_/-..----.    file managed by `whiskers`  
+##   ___/ `   ' ,""+ \                              
+##  (__...'   __\    |`.___.';                       
+##    (_,...'(_,.`__)/'.....+                         
+## ---------------------------------------------------
+
+name: build
+
+on:
+  pull_request: {}
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: git > checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        with:
+          clean: true
+          fetch-depth: 1
+
+      - name: node > setup
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: yarn > install
+        run: yarn install --frozen-lockfile
+
+      - name: yarn > build
+        env:
+          NODE_ENV: production
+        run: yarn build
+
+      - name: ci > upload artifacts
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: git > checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+        with:
+          clean: true
+          fetch-depth: 1
+
+      - name: node > setup
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: yarn > install
+        run: yarn install --frozen-lockfile
+
+      - name: yarn > lint
+        run: yarn lint
+  verify_workflow:
+    name: verify workflow
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - build
+      - lint
+    steps:
+
+      - name: verify workflow success
+        if: always()
+        run: |-
+          # resolve statuses
+          BUILD_AGGREGATE=(${{ needs['build'].result }})
+          BUILD=unknown
+          BUILD=$(if [[ " ${BUILD_AGGREGATE[@]} " == *"success"* ]]; then echo "success"; else echo "$BUILD"; fi)
+          BUILD=$(if [[ " ${BUILD_AGGREGATE[@]} " == *"skipped"* ]]; then echo "skipped"; else echo "$BUILD"; fi)
+          BUILD=$(if [[ " ${BUILD_AGGREGATE[@]} " == *"cancelled"* ]]; then echo "cancelled"; else echo "$BUILD"; fi)
+          BUILD=$(if [[ " ${BUILD_AGGREGATE[@]} " == *"failure"* ]]; then echo "failure"; else echo "$BUILD"; fi)
+          LINT_AGGREGATE=(${{ needs['lint'].result }})
+          LINT=unknown
+          LINT=$(if [[ " ${LINT_AGGREGATE[@]} " == *"success"* ]]; then echo "success"; else echo "$LINT"; fi)
+          LINT=$(if [[ " ${LINT_AGGREGATE[@]} " == *"skipped"* ]]; then echo "skipped"; else echo "$LINT"; fi)
+          LINT=$(if [[ " ${LINT_AGGREGATE[@]} " == *"cancelled"* ]]; then echo "cancelled"; else echo "$LINT"; fi)
+          LINT=$(if [[ " ${LINT_AGGREGATE[@]} " == *"failure"* ]]; then echo "failure"; else echo "$LINT"; fi)
+
+          # echo the results of each job
+          echo "BUILD: $BUILD"
+          echo "LINT: $LINT"
+
+          # assert success
+          if [[ "$BUILD" != "success" ]]; then exit 1; fi
+          if [[ "$LINT" != "success" ]]; then exit 1; fi
