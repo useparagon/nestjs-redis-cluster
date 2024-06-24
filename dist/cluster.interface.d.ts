@@ -5,6 +5,7 @@ export interface RedisClusterModuleOptions extends ClusterOptions {
     name?: string;
     nodes: (string | number | object)[];
     onClusterReady?(cluster: IORedis.Cluster): Promise<void>;
+    disableDisconnectOnShutdown?: boolean;
 }
 export interface RedisClusterModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
     useFactory?: (...args: any[]) => RedisClusterModuleOptions | RedisClusterModuleOptions[] | Promise<RedisClusterModuleOptions> | Promise<RedisClusterModuleOptions[]>;

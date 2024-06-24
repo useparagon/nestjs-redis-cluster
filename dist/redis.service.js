@@ -17,8 +17,9 @@ const common_1 = require("@nestjs/common");
 const redis_constants_1 = require("./redis.constants");
 const redis_provider_1 = require("./redis.provider");
 let RedisService = class RedisService {
-    constructor(redisClient) {
+    constructor(redisClient, options) {
         this.redisClient = redisClient;
+        this.options = options;
     }
     getClient(name) {
         if (!name) {
@@ -32,10 +33,27 @@ let RedisService = class RedisService {
     getClients() {
         return this.redisClient.clients;
     }
+    disconnectAllClients() {
+        const closeConnection = ({ clients, defaultKey }) => (options) => {
+            const name = options.name || defaultKey;
+            const client = clients.get(name);
+            if (client && !options.keepAlive) {
+                client.disconnect();
+            }
+        };
+        const closeClientConnection = closeConnection(this.redisClient);
+        if (Array.isArray(this.options)) {
+            this.options.forEach(closeClientConnection);
+        }
+        else {
+            closeClientConnection(this.options);
+        }
+    }
 };
 RedisService = __decorate([
     common_1.Injectable(),
     __param(0, common_1.Inject(redis_constants_1.REDIS_CLIENT)),
-    __metadata("design:paramtypes", [Object])
+    __param(1, common_1.Inject(redis_constants_1.REDIS_MODULE_OPTIONS)),
+    __metadata("design:paramtypes", [Object, Object])
 ], RedisService);
 exports.RedisService = RedisService;

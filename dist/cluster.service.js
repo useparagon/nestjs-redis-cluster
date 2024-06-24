@@ -17,8 +17,9 @@ const common_1 = require("@nestjs/common");
 const cluster_constants_1 = require("./cluster.constants");
 const cluster_provider_1 = require("./cluster.provider");
 let RedisClusterService = class RedisClusterService {
-    constructor(provider) {
+    constructor(provider, options) {
         this.provider = provider;
+        this.options = options;
     }
     getCluster(name) {
         if (!name) {
@@ -32,10 +33,27 @@ let RedisClusterService = class RedisClusterService {
     getClusters() {
         return this.provider.clusters;
     }
+    disconnectAllClients() {
+        const closeConnection = ({ clusters, defaultKey }) => (options) => {
+            const name = options.name || defaultKey;
+            const cluster = clusters.get(name);
+            if (cluster) {
+                cluster.disconnect();
+            }
+        };
+        const closeClusterConnection = closeConnection(this.provider);
+        if (Array.isArray(this.options)) {
+            this.options.forEach(closeClusterConnection);
+        }
+        else {
+            closeClusterConnection(this.options);
+        }
+    }
 };
 RedisClusterService = __decorate([
     common_1.Injectable(),
     __param(0, common_1.Inject(cluster_constants_1.REDIS_CLUSTER)),
-    __metadata("design:paramtypes", [Object])
+    __param(1, common_1.Inject(cluster_constants_1.REDIS_CLUSTER_MODULE_OPTIONS)),
+    __metadata("design:paramtypes", [Object, Object])
 ], RedisClusterService);
 exports.RedisClusterService = RedisClusterService;

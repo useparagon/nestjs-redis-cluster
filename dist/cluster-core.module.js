@@ -45,7 +45,7 @@ let ClusterCoreModule = ClusterCoreModule_1 = class ClusterCoreModule {
         const closeConnection = ({ clusters, defaultKey, }) => options => {
             const name = options.name || defaultKey;
             const cluster = clusters.get(name);
-            if (cluster && !options.keepAlive) {
+            if (cluster && !options.disableDisconnectOnShutdown) {
                 cluster.disconnect();
             }
         };

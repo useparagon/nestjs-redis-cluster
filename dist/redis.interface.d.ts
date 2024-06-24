@@ -4,6 +4,7 @@ export interface RedisModuleOptions extends RedisOptions {
     name?: string;
     url?: string;
     onClientReady?(client: Redis): Promise<void>;
+    disableDisconnectOnShutdown?: boolean;
 }
 export interface RedisModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
     useFactory?: (...args: any[]) => RedisModuleOptions | RedisModuleOptions[] | Promise<RedisModuleOptions> | Promise<RedisModuleOptions[]>;
