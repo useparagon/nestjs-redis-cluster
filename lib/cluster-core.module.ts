@@ -68,7 +68,7 @@ export class ClusterCoreModule implements OnApplicationShutdown {
       const name = options.name || defaultKey;
       const cluster: IORedis.Cluster = clusters.get(name);
 
-      if (cluster && !options.keepAlive) {
+      if (cluster && !options.disableDisconnectOnShutdown) {
         cluster.disconnect();
       }
     };
