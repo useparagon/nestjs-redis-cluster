@@ -1,12 +1,12 @@
 #!/usr/bin/env ts-node
 
 /* eslint-disable no-console */
-import fs from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import * as glob from 'glob';
-import path from 'path';
+import { basename } from 'path';
 
 if (process.argv.length < 3) {
-  console.error(`Usage:\n\n\t${path.basename(__filename)} <version>`);
+  console.error(`Usage:\n\n\t${basename(__filename)} <version>`);
   process.exit(1);
 }
 
@@ -21,11 +21,11 @@ glob
   })
   .forEach((location: string) => {
     console.log(`🤜 ${location}`);
-    fs.writeFileSync(
+    writeFileSync(
       location,
       JSON.stringify(
         {
-          ...JSON.parse(fs.readFileSync(location, { encoding: 'utf-8' })),
+          ...JSON.parse(readFileSync(location, { encoding: 'utf-8' })),
           version,
         },
         null,
